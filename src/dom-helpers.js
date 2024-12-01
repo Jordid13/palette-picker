@@ -18,7 +18,7 @@ const deletePalette = (event) => {
     const img = document.createElement('img')
     img.id = `sad-svg`
     img.alt = `Sad Face`
-    img.src = `./src/icons/sad.svg`
+    img.src = `./palette-picker/icons/sad.svg`
     paletteList.append(img) 
   }
 }

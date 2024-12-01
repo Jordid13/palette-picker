@@ -19,7 +19,6 @@ const addPalette = (newPalette) => {
 };
     
 const removePaletteById = (uuid) => {
-    console.log(uuid)
     const userPalettesObj = getPalettes();
     for (let palettesID in userPalettesObj) {
         if (palettesID === uuid) {
