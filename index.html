@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Picker</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lexend+Deca:wght@100..900&display=swap');
+    </style>
+    <script type="module" crossorigin src="/palette-picker/assets/index-BKWxvBaE.js"></script>
+    <link rel="stylesheet" crossorigin href="/palette-picker/assets/index-BMlXrGS3.css">
+  </head>
+  <body>
+    <main>
+      <h1>Palette Picker</h1>
+      <div id="form-container">
+      <form id="palette-form" action="" aria-label="Color Palette Form">
+        <h2>Add a Palette</h2>
+        <div id="title-container">
+          <label for="palette-title">Palette Title</label>
+          <input name="paletteTitle" id="palette-title" type="text" required />
+        </div>
+        <div id="colors-content">
+          <p id="colors-title">Colors</p>
+          <div id="color-container">
+             <div class="colors-wrapper">
+              <label for="color-1">Color #1</label>
+              <input name="colorOne" id="color-1" type="color" />
+             </div>
+             <div class="colors-wrapper">
+              <label for="color-2">Color #2</label>
+              <input name="colorTwo" id="color-2" type="color" /></div>
+             <div class="colors-wrapper">
+              <label for="color-3">Color #3</label>
+              <input name="colorThree" id="color-3" type="color" />
+             </div>
+           </div>
+        </div>
+        <fieldset>
+            <div id="temperature-wrapper">
+            <legend id="temperature-title">Temperature</legend>
+            <div id="temperature-radio-buttons">
+              <div id="warm-field">
+                <input name="temperature" id="warm" type="radio" value="warm" />
+                <label for="warm">Warm</label>
+              </div>
+              <div id="neutral-field">
+                <input name="temperature" id="neutral" type="radio" value="neutral" checked />
+                <label for="neutral">Neutral</label>
+              </div>
+              <div id="cool-field">
+                <input name="temperature" id="cool" type="radio" value="cool"/>
+                <label for="cool">Cool</label>
+              </div>
+            </div>
+          </div>
+          </fieldset>
+        <input type="submit" value="Create Palette">
+      </form>
+    </div>
+      <section id="palettes-section-title" aria-label="User Created Palettes">
+        <h2>Palettes</h2>
+        <ul id="palettes-list"></ul>
+      </section>
+    </main>
+  </body>
+</html>
