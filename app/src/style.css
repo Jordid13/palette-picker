@@ -46,9 +46,11 @@ h1 {
 }
 
 /* Applies to form container (div) */
-#form-container {
+#form-container,
+fieldset {
   display: flex;
   justify-content: center;
+  border: 0 none;
 }
 
 /* Applies to the form */
@@ -69,7 +71,6 @@ h1 {
   color: black;
 }
 
-
 /* Applies to color picker section within the form */
 #color-container {
   display: flex;
@@ -84,6 +85,7 @@ h1 {
 #title-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   text-align: center;
   gap: 10px;
 }
@@ -94,7 +96,6 @@ h1 {
   padding: 5px;
   border-style: solid;
   border-radius: 5px;
-  color: black;
   font-size: medium;
   border-color: #A1B5D8;
 }
@@ -118,12 +119,6 @@ input[type="color"]::-webkit-color-swatch {
   align-self: center;
 }
 
-/* Temperature Wrapper */
-/* Removing ugly line from fieldset */
-#form-container fieldset {
-  border: 0 none;
-}
-
 /* Applies to temperature radio buttons */
 #temperature-wrapper {
   text-align: center;
@@ -131,12 +126,11 @@ input[type="color"]::-webkit-color-swatch {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  accent-color: #5FA8D3;
 }
-
 
 #temperature-radio-buttons {
   display: flex;
-  flex-wrap: nowrap;
   gap: 25px;
 }
 
@@ -149,10 +143,10 @@ input[type="color"]::-webkit-color-swatch {
 /* Submit button */
 #palette-form [type^=submit] {
   padding: 5px;
-  background-color: #C9D5E3;
+  background-color: #80C698;
   border-style: solid;
   border-radius: 5px;
-  border-color: #A1B5D8;
+  border-color: black;
   border-width: 1px;
   height: 50%;
   width: 50%;
@@ -167,24 +161,31 @@ input[type="color"]::-webkit-color-swatch {
 
 /* Palette Cards */
 /* Palette Card Copy Buttons and Delete Buttons */
-.colors-container button,
-.palette .delete-button {
+.colors-container button {
   background-color: #C9D5E3;
   border-style: solid;
   border-radius: 5px;
   border-color: #A1B5D8;
   border-width: 1px;
-  height: 50%;
-  width: 30%;
+  height: 45px;
+  width: 70px;
   color: black;
   padding: 5px;
   align-self: center;
 }
 
-/* Palette Card Delete Button Size */
-.palette .delete-button {
+.delete-button  {
+  background-color: #F7A6A1;
+  border-color: #A1B5D8;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
   height: 50%;
   width: 50%;
+  color: black;
+  padding: 5px;
+  align-self: center;
+  
 }
 
 .palette {
@@ -214,8 +215,9 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .text-example-wrapper {
-  text-align: center;
-  /* width: 100px; */
+  border-radius: 5px;
+  align-self: center;
+  height: 100%;
   padding: 10px;
   background-color: black;
   background: linear-gradient(
@@ -229,8 +231,8 @@ input[type="color"]::-webkit-color-swatch {
 
 .text-example {
   padding: 10px;
+  width: 108px;
 }
-
 
 #palettes-list{
   list-style: none;
@@ -244,15 +246,50 @@ input[type="color"]::-webkit-color-swatch {
 .colors-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
+  width: 100%;
   justify-content: center;
 }
 
-
 .colors-palette-wrapper {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: 6%;
   justify-content: center;
+  gap: 10px;
+}
+
+/* Animations */
+#palette-form [type^=submit],
+.palette,
+.colors-container button,
+.delete-button {
+  transition: background-color 90ms ease-in-out 3ms;
+}
+
+.delete-button:hover {
+  background-color: #EA1744;
+  color: white;
+  border-color: white;
+}
+
+.palette:hover {
+  background-color: #384E6B;
+}
+
+.colors-container button:hover {
+  background-color: #272932;
+  color: white;
+  border-color: white;
+}
+
+#palette-form [type^=submit]:hover {
+  background-color: #00CC77;
+  color: white;
+  border-color: white;
+}
+
+/* Sad Face */
+#sad-svg {
+  margin-top: 10px;
 }

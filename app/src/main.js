@@ -4,9 +4,12 @@ import { v4 as generateUUID } from 'uuid';
 import palettes from './palettes.json'
 
 const renderDefaultPalettes = () => {
-    for (let palettesID in palettes) {
-        createNewPalette(palettes[palettesID])
-        addPalette(palettes[palettesID])
+    const defaultPalettesKeys = Object.keys(palettes)
+    for (let i = defaultPalettesKeys.length; i >= 0; i--) {
+        if (palettes[defaultPalettesKeys[i]] !== undefined) {
+            createNewPalette(palettes[defaultPalettesKeys[i]])
+            addPalette(palettes[defaultPalettesKeys[i]])
+        }
     }
 }
 
@@ -14,6 +17,9 @@ const createNewPalette = ({ title, colors, temperature, uuid }) => {
     const newPaletteID = generateUUID();
     // Grab Palettes List
     const paletteList = document.getElementById("palettes-list");
+    // Logic to remove the sad face
+    const sadFace = document.getElementById('sad-svg')
+    if (sadFace !== null) sadFace.remove();
     // Create list element for palette
     const paletteListItem = document.createElement('li')
     // This div contains everything inside of the palette "card"
@@ -35,17 +41,16 @@ const createNewPalette = ({ title, colors, temperature, uuid }) => {
     paletteContent.append(paletteTitle, paletteColors, deleteButton)
     // Append parent div to palette list item
     paletteListItem.append(paletteContent, colorTemperature)
-    paletteList.appendChild(paletteListItem);
-    //STORAGE ONLY BELOW (DO NOT TOUCH)
-    // If the uuid argument is not passed it means it does not exist in the local storage therefore we can add it to our storage
+    paletteList.prepend(paletteListItem);
+    // If the uuid argument is not passed it means it does not exist in the local storage so it gets added to local storage
     if (!uuid) {
-        paletteContent.setAttribute('data-paletteId', newPaletteID)
         const obj = {
             "uuid": newPaletteID,
             "title": title,
             "colors": [colors[0], colors[1], colors[2]],
             "temperature": temperature
         }
+        paletteContent.setAttribute('data-paletteId', newPaletteID)
         addPalette(obj);
     } else {
         paletteContent.setAttribute('data-paletteId', uuid)
@@ -61,7 +66,6 @@ const handleSubmit = (event) => {
         "colors": [formObject.colorOne, formObject.colorTwo, formObject.colorThree],
         "temperature": formObject.temperature
     }
-    console.log(paletteData)
     createNewPalette(paletteData);
 };
 
@@ -83,4 +87,5 @@ const fetchSavedPalettes = () => {
 
 const paletteForm = document.getElementById("palette-form");
 paletteForm.addEventListener("submit", handleSubmit);
+
 fetchSavedPalettes();

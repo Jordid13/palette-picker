@@ -9,25 +9,17 @@
     </style>
     <link rel="stylesheet" href="./src/style.css" />
     <script type="module" src="./src/main.js" defer></script>
-    
   </head>
   <body>
-    <!-- There is a single main element on the page -->
     <main>
-      <!-- There is a single h1 element on the page -->
       <h1>Palette Picker</h1>
-      <!-- There is a form -->
       <div id="form-container">
       <form id="palette-form" action="" aria-label="Color Palette Form">
-        <!-- The form has an h2 label -->
         <h2>Add a Palette</h2>
-        <!-- The form has an text input and label for the palette title -->
         <div id="title-container">
           <label for="palette-title">Palette Title</label>
-          <!-- The title is a `required` field, and the form cannot be submitted without it -->
           <input name="paletteTitle" id="palette-title" type="text" required />
         </div>
-        <!-- The form has 3 color type inputs and labels for the color inputs -->
         <div id="colors-content">
           <p id="colors-title">Colors</p>
           <div id="color-container">
@@ -44,10 +36,8 @@
              </div>
            </div>
         </div>
-        <!-- The form has a fieldset with a legend for the temperature setting -->
         <fieldset>
             <div id="temperature-wrapper">
-            <!-- The form has 3 radio inputs and labels for the temperature setting -->
             <legend id="temperature-title">Temperature</legend>
             <div id="temperature-radio-buttons">
               <div id="warm-field">
@@ -65,16 +55,11 @@
             </div>
           </div>
           </fieldset>
-        
-        <!-- The form has a `button` to submit the form -->
-        <input type="submit" />
+        <input type="submit" value="Create Palette">
       </form>
     </div>
-      <!-- There is a `section` for the palettes -->
       <section id="palettes-section-title" aria-label="User Created Palettes">
-        <!-- There is an `h2` showing the palettes section -->
         <h2>Palettes</h2>
-        <!-- The page has a `ul` and `li` items that show each palette -->
         <ul id="palettes-list"></ul>
       </section>
     </main>
