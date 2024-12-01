@@ -35,18 +35,22 @@ const copyToClipboard = async (event) => {
 
 const createColors = (colors) => {
   // This div contains the 3 palettes with respective copy buttons
-  const colorsDiv = document.createElement('div')
-  colorsDiv.className = `colors`
+  const colorsContainer = document.createElement('div')
+  colorsContainer.className = `colors-container`
   colors.forEach((color) => {
     // "Text Example" Text boxes for the 3 colors
+    const colorsWrapper = document.createElement('div')
     const colorsExampleWrapper = document.createElement('div')
     const colorsExample = document.createElement('div')
     const copyButton = document.createElement('button')
+    colorsWrapper.className = `colors-palette-wrapper`
+
     colorsExample.innerHTML = `<span style='color:white;'>Text </span><span style='color:black;'>Example</span>`
     colorsExample.style.backgroundColor = `${color}`
     colorsExample.className = 'text-example'
     colorsExampleWrapper.className = `text-example-wrapper`
-    colorsExampleWrapper.append(colorsExample)
+
+    
     // Adding hex value to each button
     copyButton.setAttribute(`data-hex`, color)
     // Copy buttons for each respective color
@@ -54,23 +58,30 @@ const createColors = (colors) => {
     // Important to add event listener for copy to clipboard functionality
     copyButton.addEventListener('click', copyToClipboard)
     // Append colors and buttons to the colors div
-    colorsDiv.append(colorsExampleWrapper, copyButton)
+
+    colorsExampleWrapper.append(colorsExample)
+
+    colorsWrapper.append(colorsExampleWrapper, copyButton)
+
+    colorsContainer.append(colorsWrapper)
+    
   })
-  return colorsDiv
+  return colorsContainer
 }
 
 const temperatureBanner = (temp) => {
+  const div = document.createElement('div')
   const colorTemperature = document.createElement('p');
   let temperatureColor
   switch (temp) {
     case 'neutral':
-      temperatureColor = `#b2b2b2`
+      temperatureColor = `#4F5D75`
       break;
     case 'cool':
-      temperatureColor = `#0032ff`
+      temperatureColor = `#3AAED8`
       break;
     case 'warm':
-      temperatureColor = `#ff0000`
+      temperatureColor = `#AF082A`
       break;
     default :
       console.log('Error')
@@ -78,7 +89,9 @@ const temperatureBanner = (temp) => {
   colorTemperature.style.color = 'white';  
   colorTemperature.textContent = temp
   colorTemperature.style.backgroundColor = temperatureColor
-  return colorTemperature
+  div.className = `temperature-banner`
+  div.append(colorTemperature)
+  return div
 }
 
 export { createColors, createParagraphs, temperatureBanner, deletePalette};

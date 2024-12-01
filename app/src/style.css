@@ -1,3 +1,4 @@
+/* Applies to all elements */
 * {
   padding: 0;
   margin: 0;
@@ -5,18 +6,210 @@
   color: white;
 }
 
+/* Applies to the body of the page (background) */
 body {
-  background-color: #181D27; 
+  background-color: #04151F; 
 }
 
-h2 {
+/* Applies to all labels */
+.colors-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+#colors-content {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  gap: 10px;
+}
+
+/* Bolding titles to highlight the different sections */
+#colors-title,
+#title-container label,
+#temperature-wrapper #temperature-title {
+  font-weight: bold;
+}
+
+/* Applies to "Palette Picker" title */
+h1 {
+  text-align: center;
+  background-color: #2E4057;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: #C9D5E3;
+  border-bottom-color: #C9D5E3;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+/* Applies to form container (div) */
+#form-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Applies to the form */
+#palette-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #2E4057;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #A1B5D8 ;
+  padding: 15px 20px 15px 20px;
+}
+
+#palette-form input{
+  color: black;
+}
+
+
+/* Applies to color picker section within the form */
+#color-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+
+}
+
+/* Applies to tile and  */
+#title-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+}
+
+#palette-title {
+  background-color: #C9D5E3;
+  border-width: 1px;
+  padding: 5px;
+  border-style: solid;
+  border-radius: 5px;
+  color: black;
+  font-size: medium;
+  border-color: #A1B5D8;
+}
+
+/* Changes the ugly default properties of input = color element */
+input[type="color" i]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-width: 0;
+}
+
+/* Changes the ugly default properties of input = color element */
+input[type="color"]::-webkit-color-swatch {
+  border-color: #A1B5D8;
+  border-radius: 5px;
+}
+
+/* Applies to the color picker elements (input = color) */
+#palette-form [type^=color] {
+  border-width: 0;
+  border-radius: 5px;
+  align-self: center;
+}
+
+/* Temperature Wrapper */
+/* Removing ugly line from fieldset */
+#form-container fieldset {
+  border: 0 none;
+}
+
+/* Applies to temperature radio buttons */
+#temperature-wrapper {
+  text-align: center;
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+#temperature-radio-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 25px;
+}
+
+/* Dimming the color on the labels to make titles stand out */
+#color-container label,
+#temperature-radio-buttons label {
+  color: #BDC9DB;
+}
+
+/* Submit button */
+#palette-form [type^=submit] {
+  padding: 5px;
+  background-color: #C9D5E3;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #A1B5D8;
+  border-width: 1px;
+  height: 50%;
+  width: 50%;
+}
+
+/* Applies to Palettes section title */
+#palettes-section-title h2 {
+  text-align: center;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
-button {
-  border-style: none;
-  background-color: #16425B;
+/* Palette Cards */
+/* Palette Card Copy Buttons and Delete Buttons */
+.colors-container button,
+.palette .delete-button {
+  background-color: #C9D5E3;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #A1B5D8;
+  border-width: 1px;
+  height: 50%;
+  width: 30%;
+  color: black;
+  padding: 5px;
+  align-self: center;
+}
+
+/* Palette Card Delete Button Size */
+.palette .delete-button {
+  height: 50%;
+  width: 50%;
+}
+
+.palette {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #2E4057;
+  border-color: #A1B5D8;
+  border-width: 1px;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: solid;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 10px;
+}
+
+.temperature-banner p {
+  border-color: #A1B5D8;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 5px;
 }
 
@@ -39,16 +232,6 @@ button {
 }
 
 
-.palette {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #747274;
-  border-radius: 20px;
-  padding: 10px;
-}
-
-
 #palettes-list{
   list-style: none;
   display: flex;
@@ -58,10 +241,18 @@ button {
   flex-wrap: wrap;
 }
 
-.colors {
+.colors-container {
   display: flex;
-  flex-wrap: wrap;
-  width: 300px;
+  flex-direction: column;
   gap: 10px;
+  justify-content: center;
+}
+
+
+.colors-palette-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6%;
   justify-content: center;
 }

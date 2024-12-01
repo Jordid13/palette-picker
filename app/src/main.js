@@ -3,6 +3,13 @@ import { addPalette, getLocalStorageKey } from "./local-storage";
 import { v4 as generateUUID } from 'uuid';
 import palettes from './palettes.json'
 
+const renderDefaultPalettes = () => {
+    for (let palettesID in palettes) {
+        createNewPalette(palettes[palettesID])
+        addPalette(palettes[palettesID])
+    }
+}
+
 const createNewPalette = ({ title, colors, temperature, uuid }) => {
     const newPaletteID = generateUUID();
     // Grab Palettes List
@@ -18,17 +25,17 @@ const createNewPalette = ({ title, colors, temperature, uuid }) => {
     // Delete button goes inside the parentDiv
     const deleteButton = document.createElement('button')
     deleteButton.textContent = `Delete Palette`
+    deleteButton.className = `delete-button`
     deleteButton.addEventListener('click', deletePalette)
     // This div contains the 3 palettes with respective copy buttons
     const paletteColors = createColors(colors)
     // Temperature banner which does inside the parent div
     const colorTemperature = temperatureBanner(temperature);
     //Append the 3 user colors along buttons to the parent div
-    paletteContent.append(paletteTitle, paletteColors, deleteButton, colorTemperature)
+    paletteContent.append(paletteTitle, paletteColors, deleteButton)
     // Append parent div to palette list item
-    paletteListItem.append(paletteContent)
+    paletteListItem.append(paletteContent, colorTemperature)
     paletteList.appendChild(paletteListItem);
-
     //STORAGE ONLY BELOW (DO NOT TOUCH)
     // If the uuid argument is not passed it means it does not exist in the local storage therefore we can add it to our storage
     if (!uuid) {
@@ -59,15 +66,13 @@ const handleSubmit = (event) => {
 };
 
 const fetchSavedPalettes = () => {
+    const savedPalettes = getLocalStorageKey('userPalettes')
     if (localStorage.getItem('userPalettes') === null) {
         localStorage.setItem('userPalettes', JSON.stringify(new Object));
+        renderDefaultPalettes();
     } else {
-        const savedPalettes = getLocalStorageKey('userPalettes')
         if (Object.keys(savedPalettes).length === 0) {
-            for (let palettesID in palettes) {
-                createNewPalette(palettes[palettesID])
-                addPalette(palettes[palettesID])
-            }
+            renderDefaultPalettes();
         } else {
             for (let palettesID in savedPalettes) {
                 createNewPalette(savedPalettes[palettesID])
